@@ -11,10 +11,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LeaderSeminarLandpageController;
 use App\Http\Controllers\EfficasiousAttendPartThreeController;
+use App\Http\Controllers\FreeWebinarAugestController;
 use App\Http\Controllers\GenerateVochuerPatch3Controller;
+use App\Http\Controllers\InstallementLandController;
 use App\Http\Controllers\LeadershipAttedJulyController;
 use App\Http\Controllers\LeaderShipAugestController;
 use App\Http\Controllers\LeadershipWebinarController;
+use App\Http\Controllers\LivingFetraController;
+use App\Http\Controllers\LivingFetraMainProController;
 use App\Http\Controllers\SeminarNineController;
 use App\Models\LeadershipAttedJuly;
 
@@ -116,6 +120,30 @@ Route::controller(LeadershipAttedJulyController::class)->group(function () {
 Route::controller(LeadershipWebinarController::class)->group(function () {
     Route::post('leaderShip-webinar-registration', 'store');
     Route::get('leaderShip-webinar-retriving', 'index');
+});
+Route::controller(FreeWebinarAugestController::class)->group(function () {
+    Route::post('leaderShip-Augwebinar-registration', 'store');
+    Route::get('leaderShip-Augwebinar-retriving', 'index');
+});
+//installement for land page
+Route::controller(InstallementLandController::class)->group(function () {
+    Route::post('installement-registration', 'store');
+    // Route::get('    ', 'index');
+});
+Route::controller(LivingFetraController::class)->group(function () {
+    Route::post('living-Fetra-registration', 'store');
+    Route::get('living-Fetra-retriving', 'index');
+});
+
+//routing livingFetra Main Programe
+Route::controller(LivingFetraMainProController::class)->group(function () {
+    Route::post('livingFetra-store', 'store');
+    Route::get('livingFetra-data', 'index');
+    Route::get('livingFetra-checkChair',  'checkChair');
+    Route::get('livingFetra-getClient/{id}',  'getClientById');
+    Route::post('livingFetra-scanQr/{id}/{key}',  'scanQrEbtAdvanced');
+    Route::get('livingFetra-getScanQr',  'getQr');
+    Route::post('livingFetra-confirmation/{id}',  'sendMessage');
 });
 
 
